@@ -62,7 +62,7 @@ public struct SkeletonLayer {
         return maskLayer is CAGradientLayer ? .gradient : .solid
     }
     
-    var contentLayer: CALayer {
+    public var contentLayer: CALayer {
         return maskLayer
     }
     
