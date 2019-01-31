@@ -53,7 +53,7 @@ public enum SkeletonType {
     }
 }
 
-struct SkeletonLayer {
+public struct SkeletonLayer {
     
     private var maskLayer: CALayer
     private weak var holder: UIView?

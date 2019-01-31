@@ -28,6 +28,11 @@ public extension UIView {
     var isSkeletonActive: Bool {
         return status == .on || (subviewsSkeletonables.first(where: { $0.isSkeletonActive }) != nil)
     }
+
+    var skeletonLayer: SkeletonLayer? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.skeletonLayer) as? SkeletonLayer }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.skeletonLayer, newValue, AssociationPolicy.retain.objc) }
+    }
 }
 
 extension UIView {
@@ -40,11 +45,6 @@ extension UIView {
     var flowDelegate: SkeletonFlowDelegate? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.flowDelegate) as? SkeletonFlowDelegate }
         set { objc_setAssociatedObject(self, &AssociatedKeys.flowDelegate, newValue, AssociationPolicy.retain.objc) }
-    }
-    
-    var skeletonLayer: SkeletonLayer? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.skeletonLayer) as? SkeletonLayer }
-        set { objc_setAssociatedObject(self, &AssociatedKeys.skeletonLayer, newValue, AssociationPolicy.retain.objc) }
     }
     
     var status: Status! {
