@@ -27,17 +27,17 @@ extension UIView {
 
     var status: Status! {
         get { return ao_get(pkey: &ViewAssociatedKeys.status) as? Status ?? .off }
-        set { ao_set(newValue, pkey: &ViewAssociatedKeys.status) }
+        set { ao_set(newValue ?? .off, pkey: &ViewAssociatedKeys.status) }
     }
 
     var skeletonIsAnimated: Bool! {
         get { return ao_get(pkey: &ViewAssociatedKeys.isSkeletonAnimated) as? Bool ?? false }
-        set { ao_set(newValue, pkey: &ViewAssociatedKeys.isSkeletonAnimated) }
+        set { ao_set(newValue ?? false, pkey: &ViewAssociatedKeys.isSkeletonAnimated) }
     }
 }
 
 public extension UIView {
-    public var skeletonLayer: SkeletonLayer? {
+    var skeletonLayer: SkeletonLayer? {
         get { return ao_get(pkey: &ViewAssociatedKeys.skeletonLayer) as? SkeletonLayer }
         set { ao_setOptional(newValue, pkey: &ViewAssociatedKeys.skeletonLayer) }
     }
